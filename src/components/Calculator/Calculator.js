@@ -22,43 +22,45 @@ const Calculator = () => {
 		fetchOperation(+a, +b, OPERATION.RESOURCE[operation]);
 	};
 
+	const renderForm = () => (
+		<form className='input-group mb-3' onSubmit={formSubmitHandler}>
+			<Dropdown options={OPERATION.LIST} onSelect={setOperation}>
+				{OPERATION.MAP[operation]}
+			</Dropdown>
+			<input
+				type='number'
+				className='form-control text-center'
+				aria-label='Text input with dropdown button'
+				placeholder='Inserte el valor de a'
+				value={a}
+				onChange={onAChangeHandler}
+			/>
+			<span
+				data-testid='calculator-operation'
+				className='input-group-text d-inline-flex justify-content-center'
+				style={{ width: 40 }}>
+				{OPERATION.SYMBOL[operation]}
+			</span>
+			<input
+				type='number'
+				className='form-control text-center'
+				aria-label='Text input with dropdown button'
+				placeholder='Inserte el valor de b'
+				value={b}
+				onChange={onBChangeHandler}
+			/>
+			<Button
+				data-testid='calculator-submit'
+				type='submit'
+				disabled={isSubmitDisbaled || loading}>
+				Calcular
+			</Button>
+		</form>
+	);
+
 	return (
 		<>
-			<div className='row py-3'>
-				<form className='input-group mb-3' onSubmit={formSubmitHandler}>
-					<Dropdown options={OPERATION.LIST} onSelect={setOperation}>
-						{OPERATION.MAP[operation]}
-					</Dropdown>
-					<input
-						type='number'
-						className='form-control text-center'
-						aria-label='Text input with dropdown button'
-						placeholder='Inserte el valor de a'
-						value={a}
-						onChange={onAChangeHandler}
-					/>
-					<span
-						data-testid='calculator-operation'
-						className='input-group-text d-inline-flex justify-content-center'
-						style={{ width: 40 }}>
-						{OPERATION.SYMBOL[operation]}
-					</span>
-					<input
-						type='number'
-						className='form-control text-center'
-						aria-label='Text input with dropdown button'
-						placeholder='Inserte el valor de b'
-						value={b}
-						onChange={onBChangeHandler}
-					/>
-					<Button
-						data-testid='calculator-submit'
-						type='submit'
-						disabled={isSubmitDisbaled || loading}>
-						Calcular
-					</Button>
-				</form>
-			</div>
+			<div className='row py-3'>{renderForm()}</div>
 			{resultExists && (
 				<p className='text-success' data-testid='calculator-result'>
 					Resultado: {payload.result}

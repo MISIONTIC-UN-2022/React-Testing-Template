@@ -60,8 +60,8 @@ describe('Pruebas de calculadora', () => {
 				const sumOption = await waitFor(() => getByText(operation));
 				fireEvent.click(sumOption);
 
-				const button = getByTestId('calculator-submit');
-				fireEvent.click(button);
+				const submit = getByTestId('calculator-submit');
+				fireEvent.click(submit);
 
 				const result = await waitFor(() =>
 					getByTestId('calculator-result')
