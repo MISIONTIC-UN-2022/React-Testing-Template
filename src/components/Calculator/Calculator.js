@@ -6,8 +6,8 @@ import { OPERATION } from '../../utilities/constants';
 import { useOperation } from '../../hooks/useOperation';
 
 const Calculator = () => {
-	const [a, setA] = useState();
-	const [b, setB] = useState();
+	const [a, setA] = useState('0');
+	const [b, setB] = useState('0');
 	const [operation, setOperation] = useState(OPERATION.LIST[0].id);
 	const { loading, error, payload, fetch: fetchOperation } = useOperation();
 
