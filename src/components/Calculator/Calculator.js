@@ -33,10 +33,12 @@ const Calculator = () => {
 						type='number'
 						className='form-control text-center'
 						aria-label='Text input with dropdown button'
+						placeholder='Inserte el valor de a'
 						value={a}
 						onChange={onAChangeHandler}
 					/>
 					<span
+						data-testid='calculator-operation'
 						className='input-group-text d-inline-flex justify-content-center'
 						style={{ width: 40 }}>
 						{OPERATION.SYMBOL[operation]}
@@ -45,10 +47,12 @@ const Calculator = () => {
 						type='number'
 						className='form-control text-center'
 						aria-label='Text input with dropdown button'
+						placeholder='Inserte el valor de b'
 						value={b}
 						onChange={onBChangeHandler}
 					/>
 					<Button
+						data-testid='calculator-submit'
 						type='submit'
 						disabled={isSubmitDisbaled || loading}>
 						Calcular
@@ -56,9 +60,15 @@ const Calculator = () => {
 				</form>
 			</div>
 			{resultExists && (
-				<p className='text-success'>Resultado: {payload.result}</p>
+				<p className='text-success' data-testid='calculator-result'>
+					Resultado: {payload.result}
+				</p>
 			)}
-			{hasError && <p className='text-danger'>{error.message}</p>}
+			{hasError && (
+				<p className='text-danger' data-testid='calculator-result'>
+					{error.message}
+				</p>
+			)}
 		</>
 	);
 };

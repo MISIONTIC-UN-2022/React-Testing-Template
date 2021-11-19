@@ -15,7 +15,7 @@ const OPERATION_MAP = {
 };
 
 const OPERATION_SYMBOLS = {
-	NO_OP: ' ',
+	NO_OP: '',
 	ADD: ' + ',
 	SUB: ' - ',
 	MUL: ' • ',
@@ -29,6 +29,8 @@ const OPERATION_RESOURCE = {
 	MUL: 'mul',
 	DIV: 'div',
 };
+
+export const DIVISION_BY_ZERO_NOT_ALLOWED = 'No se permite división por cero';
 
 export const OPERATION = {
 	LIST: OPERATION_LIST,

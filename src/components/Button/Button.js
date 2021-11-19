@@ -11,13 +11,14 @@ const Button = ({
 		'data-bs-toggle': 'dropdown',
 		'aria-expanded': 'false',
 	};
+	const dataTestId = isDropdown ? 'dropdown-button' : 'button';
 
 	return (
 		<button
 			className={`btn btn-outline-secondary ${extraClasses}`}
 			type='button'
 			onClick={onClick}
-			id='button-addon2'
+			data-testid={dataTestId}
 			{...extraProps}
 			{...rest}>
 			{children}
